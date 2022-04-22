@@ -10,6 +10,7 @@ namespace AddressBook
     {
         Contact contact = new Contact();
         List<Contact> addressBook = new List<Contact>();
+        Dictionary<string, List<Contact>> dictionaryName = new Dictionary<string, List<Contact>>();
         public AddressBookMain()
         {
             Contact contact1 = new Contact()
@@ -19,9 +20,10 @@ namespace AddressBook
                 address = "Hinjewadi",
                 city = "Pune",
                 state = "maharashtra",
+                email = "reenasharma1999@gmail.com",
                 zipcode = 424008,
                 phoneNo = 8757729815,
-                email = "reenasharma1999@gmail.com",
+                
             };
             Contact contact2 = new Contact()
             {
@@ -30,11 +32,12 @@ namespace AddressBook
                 address = "deopur dhule",
                 city = "dhule",
                 state = "madhy Pradesh",
+                email = "rockysharma1999@gmail.com",
                 zipcode = 424002,
                 phoneNo = 8942297246,
-                email = "rockysharma1999@gmail.com",
+                
             };
-            Console.WriteLine("Enter the \n 1.FirstName\n 2.LastName\n 3.Address\n 4.City 5.State\n 6.Email\n 7.postalCode\n 8.mobile Number\n");
+            Console.WriteLine("Enter the \n 1.FirstName\n 2.LastName\n 3.Address\n 4.City\n 5.State\n 6.Email\n 7.postalCode\n 8.Phone Number\n");
             Contact contact3 = new Contact()
             {
                 firstName = Console.ReadLine(),
@@ -98,7 +101,6 @@ namespace AddressBook
                             contact.phoneNo = Convert.ToInt64(Console.ReadLine()); break;
                     }
                 }
-                
             }
         }
         public void DeletingContactINAddressBook(string name)
@@ -114,8 +116,56 @@ namespace AddressBook
             addressBook.Remove(delete);
             Display();
         }
+        public void AddDictionary(string name)
+        {
+            if (dictionaryName == null)
+            {
+                dictionaryName.Add(name, addressBook);
+            }
+            if (NameExists(name) == false)
+            {
+                dictionaryName.Add(name, addressBook);
+            }
+            Console.WriteLine(dictionaryName);
+        }
+        public void EditingDictionary(string name, string contactName)
+        {
+            foreach (var data in dictionaryName)
+            {
+                if (dictionaryName.Keys.Equals(name))
+                {
+                    addressBook = data.Value;
+                    EditContactInAddressBook(contactName);
+                }
+            }
+        }
+        public bool NameExists(string name)
+        {
+            foreach (var data in dictionaryName.Keys)
+            {
+                if (data.Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public void DeleteDictionaryData(string name)
+        {
+            foreach (var data in dictionaryName)
+            {
+                if (data.Key.Equals(name))
+                {
+                    addressBook = data.Value;
+                    DeletingContactINAddressBook(name);
+                }
+            }
+            dictionaryName.Remove(name);
+        }
     }
 }
+    
+
 
 
 

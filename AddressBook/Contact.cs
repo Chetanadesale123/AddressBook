@@ -13,9 +13,10 @@ namespace AddressBook
         public string address { get; set; }
         public string city { get; set; }
         public string state { get; set; }
+        public string email { get; set; }
         public int zipcode { get; set; }
         public long phoneNo { get; set; }
-        public string email { get; set; }
+        
     }
     
 }
