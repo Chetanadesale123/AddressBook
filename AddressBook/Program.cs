@@ -10,7 +10,7 @@ class Program
         bool end = true;
         while (true)
         {
-            Console.WriteLine("Select Option\n 1.add Contact \n 2.display \n  3.end");
+            Console.WriteLine("Select Option\n 1.add Contact \n 2.Display \n3.Edit Contact \n 4.end");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -21,6 +21,9 @@ class Program
                     addContact.Display();
                     break;
                 case 3:
+                    addContact.EditContact();
+                    break;
+                case 4:
                     end = false;
                     break;
                 default:
