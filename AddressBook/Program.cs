@@ -5,8 +5,29 @@ class Program
 {
     static void Main(String[] args)
     {
-        Contact contact = new Contact();
+        Console.WriteLine("Welcome To Address Book Program");
         AddressBookMain addContact = new AddressBookMain();
-        addContact.CreatContact();
+        bool end = true;
+        while (true)
+        {
+            Console.WriteLine("Select Option\n 1.add Contact \n 2.display \n  3.end");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    addContact.addContact();
+                    break;
+                case 2:
+                    addContact.Display();
+                    break;
+                case 3:
+                    end = false;
+                    break;
+                default:
+                    Console.WriteLine("Incorrect Option");
+                    break;
+            }
+        }
     }
 }
+
