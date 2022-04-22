@@ -8,9 +8,9 @@ class Program
         Console.WriteLine("Welcome To Address Book Program");
         AddressBookMain addContact = new AddressBookMain();
         bool end = true;
-        while (true)
+        while (end == true)
         {
-            Console.WriteLine("Select Option\n 1.add Contact \n 2.Display \n3.Edit Contact \n 4.end");
+            Console.WriteLine("Select Option\n 1.Add Contact \n 2.Display \n 3.Edit Contact \n 4.Delete Contact\n 5.end");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -24,6 +24,9 @@ class Program
                     addContact.EditContact();
                     break;
                 case 4:
+                    addContact.DeleteContact();
+                    break;
+                case 5:
                     end = false;
                     break;
                 default:

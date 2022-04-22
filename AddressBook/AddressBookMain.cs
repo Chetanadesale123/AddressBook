@@ -83,8 +83,24 @@ namespace AddressBook
                 Console.WriteLine("Name is not Exist");
             }
         }
+        public void DeleteContact()
+        {
+            Contact delete = new Contact();
+            Console.WriteLine("Delete a contact list enter first name");
+            string name = Console.ReadLine();
+            foreach (var Contact in addressBook)
+            {
+                if (contact.firstName.Equals(name))
+                {
+                    delete = contact;
+                }
+            }
+            addressBook.Remove(delete);
+            Display();
+        }
     }
 }
+
 
 
 
