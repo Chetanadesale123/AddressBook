@@ -10,7 +10,7 @@ namespace AddressBook
     {
         Contact contact = new Contact();
         List<Contact> addressBook = new List<Contact>();
-        Dictionary<string, List<Contact>> dictionaryName = new Dictionary<string, List<Contact>>();
+        Dictionary<string, List<Contact>> dictionary123 = new Dictionary<string, List<Contact>>();
         public AddressBookMain()
         {
             Contact contact1 = new Contact()
@@ -53,11 +53,11 @@ namespace AddressBook
             addressBook.Add(contact2);
             addressBook.Add(contact3);
         }
-        /*public void AddContactToAddressBook(Contact contact)
+        public void AddContactToAddressBook(Contact contact)
         {
             addressBook.Add(contact);
             Display();
-        }*/
+        }
         public void Display()
         {
             foreach (var contact in addressBook)
@@ -118,21 +118,21 @@ namespace AddressBook
         }
         public void AddDictionary(string name)
         {
-            if (dictionaryName == null)
+            if (dictionary123 == null)
             {
-                dictionaryName.Add(name, addressBook);
+                dictionary123.Add(name, addressBook);
             }
             if (NameExists(name) == false)
             {
-                dictionaryName.Add(name, addressBook);
+                dictionary123.Add(name, addressBook);
             }
-            Console.WriteLine(dictionaryName);
+            Console.WriteLine(dictionary123);
         }
         public void EditingDictionary(string name, string contactName)
         {
-            foreach (var data in dictionaryName)
+            foreach (var data in dictionary123)
             {
-                if (dictionaryName.Keys.Equals(name))
+                if (dictionary123.Keys.Equals(name))
                 {
                     addressBook = data.Value;
                     EditContactInAddressBook(contactName);
@@ -141,7 +141,7 @@ namespace AddressBook
         }
         public bool NameExists(string name)
         {
-            foreach (var data in dictionaryName.Keys)
+            foreach (var data in dictionary123.Keys)
             {
                 if (data.Equals(name))
                 {
@@ -152,7 +152,7 @@ namespace AddressBook
         }
         public void DeleteDictionaryData(string name)
         {
-            foreach (var data in dictionaryName)
+            foreach (var data in dictionary123)
             {
                 if (data.Key.Equals(name))
                 {
@@ -160,8 +160,20 @@ namespace AddressBook
                     DeletingContactINAddressBook(name);
                 }
             }
-            dictionaryName.Remove(name);
+            dictionary123.Remove(name);
         }
+        public void displayDictionaryData(string name)
+        {
+            foreach (var data in dictionary123)
+            {
+                if (dictionary123.Keys.Equals(name))
+                {
+                    addressBook = data.Value;
+                }
+                Console.WriteLine(dictionary123);
+            }
+        }
+
     }
 }
     

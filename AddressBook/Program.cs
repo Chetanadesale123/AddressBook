@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace AddressBook;
 class Program
 {
     static void Main(String[] args)
     {
         Console.WriteLine("Welcome To Address Book Program");
-        AddressBookMain addContact = new AddressBookMain();
+        AddressBookMain addressBookMain = new AddressBookMain();
         bool end = true;
         while (end == true)
         {
@@ -14,33 +16,35 @@ class Program
             switch (option)
             {
                 case 1:
-                    addContact.Display();
+                    addressBookMain.Display();
                     break;
                 case 2:
                     Console.WriteLine("Enter the Name for Edit the Contact In AddressBook");
                     string name = Console.ReadLine();
-                    addContact.EditContactInAddressBook(name);
-                    addContact.Display();
+                    addressBookMain.EditContactInAddressBook(name);
+                    addressBookMain.Display();
                     break;
                 case 3:
                     Console.WriteLine("Enter the Name for Delete the data");
                     string name1 = Console.ReadLine();
-                    addContact.DeletingContactINAddressBook(name1);
+                    addressBookMain.DeletingContactINAddressBook(name1);
                     break;
                 case 4:
                     Console.WriteLine("Enter the Name for Adding data in Dictionary ");
                     string dictionaryName = Console.ReadLine();
-                    addContact.AddDictionary(dictionaryName); break;
+                    addressBookMain.AddDictionary(dictionaryName); break;
                 case 5:
                     Console.WriteLine("Enter the Name for Editing data in Dictionary ");
                     string dictName = Console.ReadLine();
                     string contactName = Console.ReadLine();
-                    addContact.EditingDictionary(dictName, contactName); break;
+                    addressBookMain.EditingDictionary(dictName, contactName);
+                    addressBookMain.displayDictionaryData(dictName);
+                   break;
                 case 6:
                     Console.WriteLine("Enter the Name for Deleting data in Dictionary ");
                     string deleteName = Console.ReadLine();
-                    addContact.DeleteDictionaryData(deleteName); break;
-                case 7:
+                    addressBookMain.DeleteDictionaryData(deleteName); break;
+                case 8:
                     end = false;
                     break;
                 default:
