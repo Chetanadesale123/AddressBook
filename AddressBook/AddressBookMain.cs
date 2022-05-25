@@ -9,8 +9,9 @@ namespace AddressBook
     public class AddressBookMain
     {
         Contact contact = new Contact();
-        List<Contact> addressBook = new List<Contact>();
+        List<Contact> personDetails = new List<Contact>();
         Dictionary<string, List<Contact>> dictionary123 = new Dictionary<string, List<Contact>>();
+
         public AddressBookMain()
         {
             Contact contact1 = new Contact()
@@ -49,25 +50,25 @@ namespace AddressBook
                 zipcode = Convert.ToInt32(Console.ReadLine()),
                 phoneNo = Convert.ToInt64(Console.ReadLine())
             };
-            addressBook.Add(contact1);
-            addressBook.Add(contact2);
-            addressBook.Add(contact3);
+            personDetails.Add(contact1);
+            personDetails.Add(contact2);
+            personDetails.Add(contact3);
         }
         public void AddContactToAddressBook(Contact contact)
         {
-            addressBook.Add(contact);
+            personDetails.Add(contact);
             Display();
         }
         public void Display()
         {
-            foreach (var contact in addressBook)
+            foreach (var contact in personDetails)
             {
                 Console.WriteLine("First Name : " + contact.firstName + "\nLast Name :" + contact.lastName + "\n Adderess : " + contact.address + "\n City :" + contact.city + "\n State :" + contact.state + "\n ZipCode :" + contact.zipcode + "\n PhoneNo :" + contact.phoneNo + "\n email :" + contact.email);
             }
         }
         public void EditContactInAddressBook(string name)
         {
-            foreach (var contact in addressBook)
+            foreach (var contact in personDetails)
             {
                 if (contact.firstName.Equals(name))
                 {
@@ -106,25 +107,25 @@ namespace AddressBook
         public void DeletingContactINAddressBook(string name)
         {
             Contact delete = new Contact();
-            foreach (var contact in addressBook)
+            foreach (var contact in personDetails)
             {
                 if (contact.firstName.Equals(name))
                 {
                     delete = contact;
                 }
             }
-            addressBook.Remove(delete);
+            personDetails.Remove(delete);
             Display();
         }
         public void AddDictionary(string name)
         {
             if (dictionary123 == null)
             {
-                dictionary123.Add(name, addressBook);
+                dictionary123.Add(name, personDetails);
             }
             if (NameExists(name) == false)
             {
-                dictionary123.Add(name, addressBook);
+                dictionary123.Add(name, personDetails);
             }
             Console.WriteLine(dictionary123);
         }
@@ -134,7 +135,7 @@ namespace AddressBook
             {
                 if (dictionary123.Keys.Equals(name))
                 {
-                    addressBook = data.Value;
+                    personDetails = data.Value;
                     EditContactInAddressBook(contactName);
                 }
             }
@@ -156,7 +157,7 @@ namespace AddressBook
             {
                 if (data.Key.Equals(name))
                 {
-                    addressBook = data.Value;
+                    personDetails = data.Value;
                     DeletingContactINAddressBook(name);
                 }
             }
@@ -168,10 +169,18 @@ namespace AddressBook
             {
                 if (dictionary123.Keys.Equals(name))
                 {
-                    addressBook = data.Value;
+                    personDetails = data.Value;
                 }
                 Console.WriteLine(dictionary123);
             }
+        }
+        public bool DuplicateEntryCheck(string name)
+        {
+            bool found = personDetails.Any(e => (e.firstName.ToLower().Equals(name.ToLower())));
+            if (found)
+                return true;
+            else
+                return false;
         }
 
     }
