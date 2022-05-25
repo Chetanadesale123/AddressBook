@@ -53,10 +53,11 @@ class Program
                     string deleteName = Console.ReadLine();
                     addressBookMain.DeleteDictionaryData(deleteName); break;
                 case 8:
-                    Console.WriteLine("Enter the CityStateName");
-                    string CityStateName = Console.ReadLine();
-                    List<Contact> list = new List<Contact>();
-                    addressBookMain.SearchbyCityorState(list, CityStateName);
+                    //Console.WriteLine("Enter the CityStateName");
+                   // string CityStateName = Console.ReadLine();
+                    //List<Contact> personDetails = new List<Contact>();
+                  
+                    addressBookMain.SearchbyCityorState();
                     break;
                 case 9:
                     end = false;

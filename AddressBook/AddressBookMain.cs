@@ -142,13 +142,18 @@ namespace AddressBook
         }
         public bool NameExists(string name)
         {
-            foreach (var data in dictionary123.Keys)
+            foreach (KeyValuePair<string, List<Contact>>author in dictionary123)
             {
-                if (data.Equals(name))
-                {
-                    return true;
-                }
+                Console.WriteLine("Key: {0}, Value: {1}",
+                author.Key, author.Value);
             }
+            //foreach (var data in dictionary123)
+            //{
+            //    if (data.Equals(name))
+            //    {
+            //        return true;
+            //    }
+            //}
             return false;
         }
         public void DeleteDictionaryData(string name)
@@ -182,14 +187,20 @@ namespace AddressBook
             else
                 return false;
         }
-        public void SearchbyCityorState(List<Contact> list, string cityStateName)
+        public void SearchbyCityorState()
         {
-            List<Contact> member = list.FindAll(x => x.city.ToLower() == cityStateName || x.state.ToLower() == cityStateName);
+           //Console.WriteLine("Enter the city or state");
+            Console.WriteLine("Enter City");
+            string city = Console.ReadLine();
+            Console.WriteLine("Enter state");
+            string state = Console.ReadLine();
+            var member = personDetails.FindAll(x => x.city.ToLower() == city || x.state.ToLower() == state);
             if (member.Count > 0)
             {
                 foreach (var members in member)
                 {
-                    Display();
+                    // Display();
+                    Console.WriteLine("firstName" +members.firstName);
                 }
 
             }
