@@ -182,6 +182,22 @@ namespace AddressBook
             else
                 return false;
         }
+        public void SearchbyCityorState(List<Contact> list, string cityStateName)
+        {
+            List<Contact> member = list.FindAll(x => x.city.ToLower() == cityStateName || x.state.ToLower() == cityStateName);
+            if (member.Count > 0)
+            {
+                foreach (var members in member)
+                {
+                    Display();
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("No contacts present");
+            }
+        }
 
     }
 }

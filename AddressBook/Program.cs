@@ -11,7 +11,7 @@ class Program
         bool end = true;
         while (end == true)
         {
-            Console.WriteLine("Select Option \n 1.Display \n 2.DublicateEntryCheck \n 3.Edit Contact \n 4.Delete Contact\n 5.Add data in dictionary\n 6.Edit data in Dictionary\n 7.Delete Data in Dictionary\n 8.end");
+            Console.WriteLine("Select Option \n 1.Display \n 2.DublicateEntryCheck \n 3.Edit Contact \n 4.Delete Contact\n 5.Add data in dictionary\n 6.Edit data in Dictionary\n 7.Delete Data in Dictionary\n 8.Search City Or State Name \n  9.end");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -53,6 +53,12 @@ class Program
                     string deleteName = Console.ReadLine();
                     addressBookMain.DeleteDictionaryData(deleteName); break;
                 case 8:
+                    Console.WriteLine("Enter the CityStateName");
+                    string CityStateName = Console.ReadLine();
+                    List<Contact> list = new List<Contact>();
+                    addressBookMain.SearchbyCityorState(list, CityStateName);
+                    break;
+                case 9:
                     end = false;
                     break;
                 default:
